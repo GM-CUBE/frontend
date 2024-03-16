@@ -32,6 +32,9 @@
       "@assets/*": [
         "assets/*",
         "assets/page/*"
+      ],
+      "@styles/*": [
+        "styles/*",
       ]
     }
   },
