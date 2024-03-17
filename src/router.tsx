@@ -5,6 +5,7 @@ import Learn from "@pages/Learn";
 import { createBrowserRouter } from "react-router-dom";
 import Login from "@pages/Auth/Login";
 import Signup from "@pages/Auth/Signup";
+import Me from "@pages/Auth/Me";
 
 export const router = createBrowserRouter([
     {
@@ -30,5 +31,9 @@ export const router = createBrowserRouter([
     {
         path: "/learn",
         element: <Learn />
+    },
+    {
+        path: "/me",
+        element: <Me />
     }
 ])
