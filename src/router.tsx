@@ -5,6 +5,7 @@ import Login from "@pages/Auth/Login";
 import Signup from "@pages/Auth/Signup";
 import Exercise from "@pages/lessons/Exercise"
 import { createBrowserRouter } from "react-router-dom";
+import Match from "@pages/arena/Match";
 
 export const router = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ export const router = createBrowserRouter([
     {
         path: "/play",
         element: <Arena />
+    },
+    {
+        path: "/play/match",
+        element: <Match />
     },
     {
         path: "/login",

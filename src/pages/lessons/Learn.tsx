@@ -14,7 +14,7 @@ const Learn = () => {
      useEffect(() => {
           const fetchData = async () => {
                try {
-                    const response = await get('levels');
+                    const response = await get('levels', context.token);
                     const newData = response.levels; 
                     setData(newData); 
                     // console.log(newData);

@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faLayerGroup } from '@fortawesome/free-solid-svg-icons'
+import { useSessionContext } from "hooks/useSessionContext";
 
 const NavBar = () => {
+     const context = useSessionContext()
+
      return (
           <header className="text-gray-600 body-font h-24 container mx-auto flex flex-wrap pt-5 flex-col md:flex-row items-center">
                <Link to='/' className="flex items-center mb-4 md:mb-0">
@@ -14,18 +17,25 @@ const NavBar = () => {
 
                <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center text-[#EEEEEE]">
                     <Link to="/" className="mr-5 hover:text-gray-500 text-2xl">Home</Link>
-                    <Link to="/learn" className="mr-5 hover:text-gray-500 text-2xl">Learn</Link>
-                    <Link to="/play" className="mr-5 hover:text-gray-500 text-2xl">Play</Link>
+                    <Link to={context.user === null ? "/login" : "/learn"} className="mr-5 hover:text-gray-500 text-2xl">Learn</Link>
+                    <Link to={context.user === null ? "/login" : "/play"} className="mr-5 hover:text-gray-500 text-2xl">Play</Link>
                </nav>
 
-               <Link to="/login" className="text-white bg-[#76ABAE] border-0 py-1 px-5 focus:outline-none hover:bg-[#35575A] rounded mt-4 md:mt-0 mr-2 text-xl"> Log in </Link>
+               {context.user === null ? (
+                    <>
+                         <Link to="/login" className="text-white bg-[#76ABAE] border-0 py-1 px-5 focus:outline-none hover:bg-[#35575A] rounded mt-4 md:mt-0 mr-2 text-xl"> Log in </Link>
 
-               <Link to="/signup" className="bg-[#EEEEEE] border-0 py-1 px-3 focus:outline-none hover:bg-[#7A7A7A] hover:text-[#EEEEEE] rounded mt-4 md:mt-0 text-xl">
-                    <span className="inline-flex items-center gap-2">
-                         <p>Sign up</p>
-                         <FontAwesomeIcon icon={faArrowRight} />
-                    </span>
-               </Link>
+                         <Link to="/signup" className="bg-[#EEEEEE] border-0 py-1 px-3 focus:outline-none hover:bg-[#7A7A7A] hover:text-[#EEEEEE] rounded mt-4 md:mt-0 text-xl">
+                              <span className="inline-flex items-center gap-2">
+                                   <p>Sign up</p>
+                                   <FontAwesomeIcon icon={faArrowRight} />
+                              </span>
+                         </Link>
+                    </>
+               ) : (
+                    <Link to="/me" className="text-white bg-[#76ABAE] border-0 py-1 px-5 focus:outline-none hover:bg-[#35575A] rounded mt-4 md:mt-0 mr-2 text-xl"> Me </Link>
+               )}
+
           </header>
 
      );

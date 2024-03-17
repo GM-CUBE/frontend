@@ -1,9 +1,12 @@
 import PageTemplate from "@assets/PageTemplate";
-import { FormEvent, useContext, useState } from "react";
-import { SessionContext } from "@context/SessionContext";
+import { FormEvent, useState } from "react";
+import { useSessionContext } from "hooks/useSessionContext";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Signup = () => {
-    const session = useContext(SessionContext)
+    const session = useSessionContext()
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -14,16 +17,20 @@ const Signup = () => {
     const OnSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        let res = await session.signup(firstName, lastName, age, username, password);
-        
+        const res = await session.signup(firstName, lastName, age, username, password);
+
         console.log(res)
     }
 
     return (
         <PageTemplate>
-            
-            <form className="rounded-lg border-2 border-white flex flex-col items-center p-6 mx-auto w-1/2 space-y-3"
-             onSubmit={OnSubmit}>
+
+            <form className="rounded-lg border-2 border-white flex flex-col items-center p-6 mx-[5%] xl:w-1/2 xl:mx-auto mt-5 space-y-3 text-white"
+                onSubmit={OnSubmit}>
+                <Link to="/" className=" self-start">
+                    <FontAwesomeIcon icon={faArrowLeft} className="pe-2" />
+                    Regresar
+                </Link>
 
                 <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-[#f6c90e]">SIGN UP</h1>
 
@@ -31,11 +38,10 @@ const Signup = () => {
 
                     {/* FIRSTNAME */}
                     <div className="flex flex-col">
-                        <label className="text-white">First name:</label>
+                        <label className="">First name:</label>
                         <input
-                            className="bg-transparent rounded-md border-2 border-solid border-white text-white my-2 py-1 ps-1"
+                            className="bg-transparent rounded-md border-2 border-solid border-white  my-2 py-1 ps-1"
                             type="text"
-                            id="username"
                             value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
                         />
@@ -43,11 +49,10 @@ const Signup = () => {
 
                     {/* LASTNAME */}
                     <div className="flex flex-col">
-                        <label className="text-white">Last name:</label>
+                        <label className="">Last name:</label>
                         <input
-                            className="bg-transparent rounded-md border-2 border-solid border-white text-white my-2 py-1 ps-1"
+                            className="bg-transparent rounded-md border-2 border-solid border-white  my-2 py-1 ps-1"
                             type="text"
-                            id="username"
                             value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
                         />
@@ -55,11 +60,10 @@ const Signup = () => {
 
                     {/* AGE */}
                     <div className="flex flex-col">
-                        <label className="text-white">Age:</label>
+                        <label className="">Age:</label>
                         <input
-                            className="bg-transparent rounded-md border-2 border-solid border-white text-white my-2 py-1 ps-1"
+                            className="bg-transparent rounded-md border-2 border-solid border-white  my-2 py-1 ps-1"
                             type="text"
-                            id="username"
                             value={age}
                             onChange={(e) => setAge(Number(e.target.value))}
                         />
@@ -70,11 +74,10 @@ const Signup = () => {
 
                     {/* USERNAME */}
                     <div className="flex flex-col">
-                        <label className="text-white">Username:</label>
+                        <label className="">Username:</label>
                         <input
-                            className="bg-transparent rounded-md border-2 border-solid border-white text-white my-2 py-1 ps-1"
+                            className="bg-transparent rounded-md border-2 border-solid border-white  my-2 py-1 ps-1"
                             type="text"
-                            id="username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
@@ -82,11 +85,10 @@ const Signup = () => {
 
                     {/* PASSWORD */}
                     <div className="flex flex-col">
-                        <label className="text-white">Password:</label>
+                        <label className="">Password:</label>
                         <input
-                            className="bg-transparent rounded-md border-2 border-solid border-white text-white my-2 py-1 ps-1"
+                            className="bg-transparent rounded-md border-2 border-solid border-white  my-2 py-1 ps-1"
                             type="password"
-                            id="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
@@ -94,8 +96,8 @@ const Signup = () => {
 
                 </fieldset>
 
-                    <button className="rounded-md border-2 border-solid border-white text-white p-1" type="submit">Sign up</button>
-            
+                <button className="rounded-md border-2 border-solid border-white text-white p-1" type="submit">Sign up</button>
+
             </form>
 
         </PageTemplate>

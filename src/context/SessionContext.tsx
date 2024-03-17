@@ -5,8 +5,12 @@ import { useAPI } from "hooks/useAPI";
 export const SessionContext = React.createContext<SessionContextModel>({
     user: null,
     token: "",
+    currentMatch: null,
+    shortcuts: [],
     login: async () => false,
-    signup: async () => false
+    signup: async () => false,
+    getShortcuts: async () => { },
+    initMatch: () => { }
 })
 
 type Props = {
@@ -15,17 +19,21 @@ type Props = {
 
 const SessionContextProvider = ({ children }: Props) => {
 
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState<user>(null)
+    const [currentMatch, setCurrentMatch] = useState<match>(null)
     const [token, setToken] = useState("")
 
+    const [shortcuts, setShortcuts] = useState<shortcutModel[]>([])
+
     const {
+        get,
         post
     } = useAPI();
 
     const login = async (username: string, password: string) => {
         const passwordHash = MD5(password).toString();
 
-        const data = await post("login", "", JSON.stringify({"username": username, "password": passwordHash}))
+        const data = await post("login", "", JSON.stringify({ "username": username, "password": passwordHash }))
 
         if (data != false) {
             setUser(data['user'])
@@ -39,7 +47,7 @@ const SessionContextProvider = ({ children }: Props) => {
     const signup = async (firstName: string, lastName: string, age: number, username: string, password: string) => {
         const passwordHash = MD5(password).toString();
 
-        const data = await post("signup", "", JSON.stringify({'firstName': firstName, "lastName": lastName, "age": age, "username": username, "password": passwordHash}))
+        const data = await post("signup", "", JSON.stringify({ 'firstName': firstName, "lastName": lastName, "age": age, "username": username, "password": passwordHash }))
 
         if (data != false) {
             setUser(data['user'])
@@ -50,11 +58,43 @@ const SessionContextProvider = ({ children }: Props) => {
         return false
     };
 
+    const getShortcuts = async () => {
+
+        const data = await get("shortcut", token)
+
+        if (data != false) {
+            const tempArray: shortcutModel[] = []
+
+            data['data'].map((shortcut: any) => {
+
+                tempArray.push({
+                    id: shortcut['id'],
+                    price: shortcut['price'],
+                    name: shortcut['name'],
+                    weighing: shortcut['weighing'],
+                    available: true
+                })
+
+            })
+
+            setShortcuts(tempArray)
+        }
+
+    };
+    const initMatch = (match: match) => {
+        setCurrentMatch(match)
+    }
+
+
     const sessionContext: SessionContextModel = {
         user,
         token,
+        currentMatch,
+        shortcuts,
         login,
-        signup
+        signup,
+        getShortcuts,
+        initMatch
     }
 
     return (

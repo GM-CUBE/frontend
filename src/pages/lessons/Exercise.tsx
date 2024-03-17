@@ -23,7 +23,7 @@ const Learn = () => {
                try {
                     const user = context.user
                     if (user !== null){
-                         const response = await get(`lesson/${user.id}`);
+                         const response = await get(`lesson/${user.id}`, context.token);
                          const newParagraph = response.paragraph; 
                          setParagraph(newParagraph);
                          

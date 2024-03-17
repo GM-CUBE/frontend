@@ -5,8 +5,13 @@ export const useAPI = () => {
         return api_url + end_point
     }
 
-    const get = async (end_point: string) => {
-        const response = await fetch(get_endpoint(end_point))
+    const get = async (end_point: string, token: string) => {
+        const response = await fetch(get_endpoint(end_point), {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
 
         if (response.ok) {
             const data = await response.json()
@@ -24,7 +29,7 @@ export const useAPI = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer' + token
+                'Authorization': 'Bearer ' + token
             },
             body: body
         })
@@ -45,7 +50,7 @@ export const useAPI = () => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application-json',
-                'Authorization': 'Bearer' + token
+                'Authorization': 'Bearer ' + token
             },
             body: body
         })
@@ -61,8 +66,13 @@ export const useAPI = () => {
 
     }
 
-    const delet = async (end_point: string) => {
-        const response = await fetch(get_endpoint(end_point))
+    const delet = async (end_point: string, token: string) => {
+        const response = await fetch(get_endpoint(end_point), {
+            method: 'DELETE',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+        })
 
         if (response.ok) {
             const data = await response.json()
