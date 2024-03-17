@@ -1,9 +1,9 @@
 import PageTemplate from "@assets/PageTemplate";
-import { SessionContext } from "@context/SessionContext";
-import { FormEvent, useContext, useState } from "react";
+import { useSessionContext } from "hooks/useSessionContext";
+import { FormEvent, useState } from "react";
 
 const Login = () => {
-    const session = useContext(SessionContext)
+    const session = useSessionContext()
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")

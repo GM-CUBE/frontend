@@ -6,7 +6,9 @@ export const SessionContext = React.createContext<SessionContextModel>({
     user: null,
     token: "",
     login: async () => false,
-    signup: async () => false
+    signup: async () => false,
+    shortcuts: [],
+    getShortcuts: async () => {}
 })
 
 type Props = {
@@ -18,7 +20,10 @@ const SessionContextProvider = ({ children }: Props) => {
     const [user, setUser] = useState(null)
     const [token, setToken] = useState("")
 
+    const [shortcuts, setShortcuts] = useState<shortcutModel[]>([])
+
     const {
+        get,
         post
     } = useAPI();
 
@@ -50,11 +55,37 @@ const SessionContextProvider = ({ children }: Props) => {
         return false
     };
 
+    const getShortcuts = async () => {
+        
+        const data = await get("shortcut")
+        
+        if (data != false) {
+            const tempArray: shortcutModel[] = []
+
+            data['data'].map((shortcut: any) => {
+                
+                tempArray.push({
+                    id: shortcut['id'],
+                    price: shortcut['price'],
+                    name: shortcut['name'],
+                    weighing: shortcut['weighing'],
+                    available: true
+                })
+            
+            })
+            
+            setShortcuts(tempArray)
+        }
+
+    };
+
     const sessionContext: SessionContextModel = {
         user,
         token,
         login,
-        signup
+        signup,
+        shortcuts,
+        getShortcuts
     }
 
     return (

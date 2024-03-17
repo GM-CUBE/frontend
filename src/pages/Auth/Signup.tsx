@@ -1,9 +1,11 @@
 import PageTemplate from "@assets/PageTemplate";
-import { FormEvent, useContext, useState } from "react";
-import { SessionContext } from "@context/SessionContext";
+import { FormEvent, useState } from "react";
+import { useSessionContext } from "hooks/useSessionContext";
+import Shortcut from "@pages/shortcut/Shortcut";
+import Answer from "@pages/Answer";
 
 const Signup = () => {
-    const session = useContext(SessionContext)
+    const session = useSessionContext()
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -15,9 +17,16 @@ const Signup = () => {
         event.preventDefault()
 
         let res = await session.signup(firstName, lastName, age, username, password);
-        
+
         console.log(res)
     }
+
+    return (
+        <PageTemplate>
+            {/* <Shortcut /> */}
+            <Answer />
+        </PageTemplate>
+    );
 
     return (
         <PageTemplate>
