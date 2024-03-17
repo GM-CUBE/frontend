@@ -9,7 +9,7 @@ export const useAPI = () => {
         const response = await fetch(get_endpoint(end_point), {
             method: 'GET',
             headers: {
-                'Authorization': 'Bearer' + token
+                'Authorization': 'Bearer ' + token
             }
         })
 
@@ -29,7 +29,7 @@ export const useAPI = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer' + token
+                'Authorization': 'Bearer ' + token
             },
             body: body
         })
@@ -50,7 +50,7 @@ export const useAPI = () => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application-json',
-                'Authorization': 'Bearer' + token
+                'Authorization': 'Bearer ' + token
             },
             body: body
         })
@@ -70,7 +70,7 @@ export const useAPI = () => {
         const response = await fetch(get_endpoint(end_point), {
             method: 'DELETE',
             headers: {
-                'Authorization': 'Bearer' + token
+                'Authorization': 'Bearer ' + token
             },
         })
 

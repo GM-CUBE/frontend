@@ -22,8 +22,7 @@ const Login = () => {
     return (
         <PageTemplate>
 
-            <form className="rounded-lg border-2 border-white flex flex-col items-center p-6 mx-auto w-56 space-y-3 text-white"
-                onSubmit={OnSubmit}>
+            <form className="rounded-lg border-2 border-white flex flex-col items-center p-6 mx-auto w-56 space-y-3 text-white" onSubmit={OnSubmit}>
                 <Link to="/" className=" self-start">
                     <FontAwesomeIcon icon={faArrowLeft} className="pe-2" />
                     Regresar
@@ -38,7 +37,6 @@ const Login = () => {
                     <input
                         className="bg-transparent rounded-md border-2 border-solid border-white text-white my-2 py-1 ps-1"
                         type="text"
-                        id="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                     />
@@ -48,7 +46,6 @@ const Login = () => {
                     <input
                         className="bg-transparent rounded-md border-2 border-solid border-white text-white my-2 py-1 ps-1"
                         type="password"
-                        id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />

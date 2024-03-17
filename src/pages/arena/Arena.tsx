@@ -3,28 +3,79 @@ import Aside from "./components/Aside"
 import { useSessionContext } from "hooks/useSessionContext"
 import { useAPI } from "hooks/useAPI"
 import { useState } from "react"
+import { useNavigate } from "react-router"
 
 const Arena = () => {
     const [message, setMsg] = useState('')
     const [error, setError] = useState(false)
 
+    const navigator = useNavigate()
     const Context = useSessionContext()
     const {
-        post
+        post,
+        get
     } = useAPI()
 
-    const onClick = async () => {
-        const data = await post(`queue/${Context.user.id}`, Context.token, '')
-        console.log(data)
 
-        if (data != false) {
-            const a = 1
+    async function searchMatch() {
+        const user = Context.user
 
-            console.log(a)
+        if (user != null) {
+            const data = await get(`has_match/${user.id}`, Context.token)
+
+            if (data != false) {
+                if (data['message'] == 'Match Found') {
+                    setMsg("Match Found")
+
+                    Context.initMatch({
+                        questions: data['questions'],
+                        clash: data['match'],
+                        game: data['game']
+                    })
+
+                    setTimeout(() => {
+                        navigator('/play/match')
+                    }, 500);
+                }
+            }
+            else {
+                setMsg("Something went wrong")
+                setError(true)
+            }
+
         }
-        else {
-            setMsg("Something went wrong")
-            setError(true)
+    }
+
+
+
+    const onClick = async () => {
+        const user = Context.user
+
+        if (user != null) {
+            const data = await post(`queue/${user.id}`, Context.token, '')
+            if (data != false) {
+                if (data['message'] == 'Waiting...') {
+                    setMsg("Searching for opponent")
+                    setInterval(searchMatch, 1000, 30000)
+                }
+                else if (data['message'] == 'Match Found') {
+                    setMsg("Match Found")
+
+                    Context.initMatch({
+                        questions: data['questions'],
+                        clash: data['match'],
+                        game: data['game']
+                    })
+
+                    setTimeout(() => {
+                        navigator('/play/match')
+                    }, 500);
+                }
+            }
+            else {
+                setMsg("Something went wrong")
+                setError(true)
+            }
         }
     }
 

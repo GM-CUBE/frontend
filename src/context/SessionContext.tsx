@@ -5,8 +5,10 @@ import { useAPI } from "hooks/useAPI";
 export const SessionContext = React.createContext<SessionContextModel>({
     user: null,
     token: "",
+    currentMatch: null,
     login: async () => false,
-    signup: async () => false
+    signup: async () => false,
+    initMatch: () => { }
 })
 
 type Props = {
@@ -15,7 +17,8 @@ type Props = {
 
 const SessionContextProvider = ({ children }: Props) => {
 
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState<user>(null)
+    const [currentMatch, setCurrentMatch] = useState<match>(null)
     const [token, setToken] = useState("")
 
     const {
@@ -50,11 +53,18 @@ const SessionContextProvider = ({ children }: Props) => {
         return false
     };
 
+    const initMatch = (match: match) => {
+        setCurrentMatch(match)
+    }
+
+
     const sessionContext: SessionContextModel = {
         user,
         token,
+        currentMatch,
         login,
-        signup
+        signup,
+        initMatch
     }
 
     return (
