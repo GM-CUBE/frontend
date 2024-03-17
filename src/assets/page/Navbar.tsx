@@ -15,12 +15,12 @@ const NavBar = () => {
      }
 
      return (
-          <header className="text-gray-600 body-font h-24 container mx-auto flex flex-wrap pt-5 flex-col md:flex-row items-center">
+          <header className="text-gray-600 body-font h-24 container px-20 p flex flex-wrap pt-5 flex-col md:flex-row items-center">
                <Link to='/' className="flex items-center mb-4 md:mb-0">
                     <i className="bg-indigo-800 rounded-full">
                          <FontAwesomeIcon icon={faLayerGroup} className="p-2 text-3xl text-white" />
                     </i>
-                    <h2 className="ml-3 text-3xl text-[#f6c90e]">Tailblocks</h2>
+                    <h2 className="ml-3 text-3xl text-[#f6c90e]">Versus.py</h2>
                </Link>
 
                <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center text-[#EEEEEE]">
