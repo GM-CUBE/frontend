@@ -1,14 +1,11 @@
 import PageTemplate from "@assets/PageTemplate";
-import NavBar from "./NavBat";
-import Footer from "./Footer";
-import PythonLogo from '../assets/python-logo-only.svg'
-
+import PythonLogo from '@assets/python-logo-only.svg'
+import About from "./components/About ";
 
 const Home = () => {
     return (
         <PageTemplate>
            <div className="bg-gray-900 min-h-screen flex flex-col">
-                <NavBar />
                 <section className="text-gray-600 body-font flex-grow mt-[10%] mx-5">
                     <div className="container my-auto mx-auto flex md:flex-row flex-col items-center justify-center">
                         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 flex justify-center items-center">
@@ -33,7 +30,7 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
-                <Footer />
+                <About></About>
             </div>
         </PageTemplate>
     );

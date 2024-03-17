@@ -27,7 +27,8 @@
         "context/*"
       ],
       "@pages/*": [
-        "pages/*"
+        "pages/*",
+        "pages/home/*"
       ],
       "@assets/*": [
         "assets/*",
