@@ -4,6 +4,7 @@ import About from "./components/About ";
 import Team from "./components/Team";
 import Tecnologies from "./components/Tecnologies";
 import Taskflow from "./components/Taskflow";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     return (
@@ -26,12 +27,12 @@ const Home = () => {
                             </p>
 
                             <div className="flex justify-center">
-                                <button className="inline-flex text-white bg-[#76ABAE] border-0 py-2 px-6 focus:outline-none hover:bg-[#35575A] rounded text-lg">
+                                <Link to="/signup" className="inline-flex text-white bg-[#76ABAE] border-0 py-2 px-6 focus:outline-none hover:bg-[#35575A] rounded text-lg">
                                     Start coding
                                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-9 h-7 ml-1" viewBox="0 0 24 24">
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                                     </svg>
-                                </button>
+                                </Link>
                             </div>
                 
                         </div>
