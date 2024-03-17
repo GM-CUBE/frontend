@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
         element: <Learn />
     },
     {
-        path: "/exercise",
+        path: "/exercise/:level_id",
         element: <Exercise />  
     }
 ])
