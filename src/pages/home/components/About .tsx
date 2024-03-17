@@ -18,10 +18,6 @@ const About = () => {
                     Además, por cada combate ganado obtendrás monedas que podrás utilizar para adquirir ventajas en combate para atacar o defenderte de tu oponente, convirtiendo cada desafío en un emocionante combate.
                </p>
 
-               <br />
-               <br />
-               <br />
-
           </div>
      )
 }
