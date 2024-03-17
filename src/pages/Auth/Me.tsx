@@ -1,12 +1,38 @@
 import PageTemplate from "@assets/page/PageTemplate";
 import { useSessionContext } from "hooks/useSessionContext";
-import { faTrophy, faCoins, faFireFlameCurved, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faTrophy, faCoins, faFireFlameCurved, faUser, faRankingStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
+import { useAPI } from "hooks/useAPI";
 
 const Me = () => {
 
     const Context = useSessionContext()
     const user = Context.user
+    const token = Context.token
+
+    const [level, setLevel] = useState("")
+
+    const {
+        get
+    } = useAPI();
+
+    const getData = async () => {
+        const data = await get('levels', token)
+
+        data['levels'].map((l:any) => {
+            if (user){
+                
+                if (user.prestige >= l['minimumPrestige'] && user.prestige <= l['maximumPrestige']){
+                    setLevel(l['name'])
+                }
+            }
+        })
+    }
+    
+    useEffect(() => {
+        getData()
+    }, [])
 
     return (
         <PageTemplate>
@@ -19,7 +45,7 @@ const Me = () => {
                 <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-[#f6c90e]">{user?.username}</h1>
                 
                 {/* User prestige, coins and streak */}
-                <div className="rounded-lg border-2 border-white flex flex-col items-center w-60 h-20 place-content-center">
+                <div className="rounded-lg border-2 border-white flex flex-col items-center w-60 h-30 place-content-center">
 
                     <div className="flex flex-row items-center w-60 h-20 place-content-center">
 
@@ -38,6 +64,14 @@ const Me = () => {
                     <div className="inline-flex items-center gap-2 mx-10">
                         <FontAwesomeIcon icon={faFireFlameCurved} color="#f6c90e"/>
                         <h2 className="title-font sm:text-2xl text-1xl font-medium text-white">{user?.coins}</h2>
+                    </div>
+
+                    <span className="inline-block h-1 w-32 rounded bg-[#f6c90e] my-4" />
+
+                    {/* Level */}
+                    <div className="inline-flex items-center gap-2 mx-10 mb-2">
+                        <FontAwesomeIcon icon={faRankingStar} color="#f6c90e"/>
+                        <h2 className="title-font sm:text-2xl text-1xl font-medium text-white">{level}</h2>
                     </div>
 
                 </div>
