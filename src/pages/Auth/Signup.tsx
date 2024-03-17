@@ -1,35 +1,29 @@
 import PageTemplate from "@assets/PageTemplate";
 import { FormEvent, useState } from "react";
-import { MD5 } from 'crypto-js';
-import { useAPI } from "hooks/useAPI";
+import { useSessionContext } from "hooks/useSessionContext";
 
 const Signup = () => {
+    const session = useSessionContext()
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
-    const [age, setAge] = useState<number>()
+    const [age, setAge] = useState(0)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-
-    const {
-        post
-    } = useAPI();
 
     const OnSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        const passwordHash = MD5(password).toString();
+        const res = await session.signup(firstName, lastName, age, username, password);
 
-        const data = await post("signup", "", JSON.stringify({'firstName': firstName, "lastName": lastName, "age": age, "username": username, "password": passwordHash}))
-
-        console.log(data)
+        console.log(res)
     }
 
     return (
         <PageTemplate>
-            
+
             <form className="rounded-lg border-2 border-white flex flex-col items-center p-6 mx-auto w-1/2 space-y-3"
-             onSubmit={OnSubmit}>
+                onSubmit={OnSubmit}>
 
                 <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-[#f6c90e]">SIGN UP</h1>
 
@@ -100,8 +94,8 @@ const Signup = () => {
 
                 </fieldset>
 
-                    <button className="rounded-md border-2 border-solid border-white text-white p-1" type="submit">Sign up</button>
-            
+                <button className="rounded-md border-2 border-solid border-white text-white p-1" type="submit">Sign up</button>
+
             </form>
 
         </PageTemplate>
