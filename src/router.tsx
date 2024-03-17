@@ -1,6 +1,6 @@
 import Home from "@pages/Home";
-import Login from "@pages/Login";
-import Signup from "@pages/Signup";
+import Login from "@pages/Auth/Login";
+import Signup from "@pages/Auth/Signup";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([

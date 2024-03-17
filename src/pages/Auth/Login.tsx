@@ -1,13 +1,25 @@
 import PageTemplate from "@assets/PageTemplate";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
+import { MD5 } from 'crypto-js';
+import { useAPI } from "hooks/useAPI";
 
 const Login = () => {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
-    const OnSubmit = () => {
+    const {
+        post
+    } = useAPI();
 
+    const OnSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+
+        const passwordHash = MD5(password).toString();
+
+        const data = await post("login", "", JSON.stringify({"username": username, "password": passwordHash}))
+
+        console.log(data)
     }
 
     return (
