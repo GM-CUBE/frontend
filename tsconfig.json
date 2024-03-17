@@ -28,7 +28,8 @@
       ],
       "@pages/*": [
         "pages/*",
-        "pages/home/*"
+        "pages/home/*",
+        "pages/arena/*"
       ],
       "@assets/*": [
         "assets/*",
