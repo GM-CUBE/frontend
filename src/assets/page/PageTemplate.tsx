@@ -8,7 +8,7 @@ type Props = {
 
 const PageTemplate = ({ children }: Props) => {
     return (
-        <>
+        <div className="bg-[#222831]">
             <Navbar />
 
             <main>
@@ -16,7 +16,7 @@ const PageTemplate = ({ children }: Props) => {
             </main>
 
             <Footer />
-        </>
+        </div>
     );
 }
 
