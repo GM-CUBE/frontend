@@ -4,4 +4,6 @@ type user = {
 
 type SessionContextModel = {
     user: user
+    token: string,
+    login: (username: string, password: string) => Promise<boolean>
 }

@@ -1,7 +1,8 @@
 import PageTemplate from "@assets/PageTemplate";
-import { FormEvent, useState } from "react";
-import { MD5 } from 'crypto-js';
-import { useAPI } from "hooks/useAPI";
+import SessionContextProvider, { SessionContext } from "@context/SessionContext";
+import { FormEvent, useContext, useState } from "react";
+// import { MD5 } from 'crypto-js';
+// import { useAPI } from "hooks/useAPI";
 
 const Login = () => {
 
@@ -9,17 +10,25 @@ const Login = () => {
     const [password, setPassword] = useState("")
 
     const {
-        post
-    } = useAPI();
+        login
+    } = useContext(SessionContext);
+
+    // const {
+    //     post
+    // } = useAPI();
 
     const OnSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        const passwordHash = MD5(password).toString();
+        let res = await login(username, password);
 
-        const data = await post("login", "", JSON.stringify({"username": username, "password": passwordHash}))
+        console.log(res)
 
-        console.log(data)
+        // const passwordHash = MD5(password).toString();
+
+        // const data = await post("login", "", JSON.stringify({"username": username, "password": passwordHash}))
+
+        // console.log(data)
     }
 
     return (
