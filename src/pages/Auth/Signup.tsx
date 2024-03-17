@@ -70,7 +70,7 @@ const Signup = () => {
                 onSubmit={OnSubmit}>
                 <Link to="/" className=" self-start">
                     <FontAwesomeIcon icon={faArrowLeft} className="pe-2" />
-                    Regresar
+                    Back
                 </Link>
 
                 <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-[#f6c90e]">SIGN UP</h1>

@@ -33,7 +33,7 @@ const Login = () => {
             <form className="rounded-lg border-2 border-white flex flex-col items-center p-6 mx-auto w-[35%] space-y-3 text-white " onSubmit={OnSubmit}>
                 <Link to="/" className=" self-start">
                     <FontAwesomeIcon icon={faArrowLeft} className="pe-2" />
-                    Regresar
+                    Back
                 </Link>
 
                 <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-[#f6c90e]">LOGIN</h1>
