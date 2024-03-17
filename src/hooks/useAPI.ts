@@ -23,7 +23,7 @@ export const useAPI = () => {
         const response = await fetch(get_endpoint(end_point), {
             method: 'POST',
             headers: {
-                'Content-Type': 'application-json',
+                'Content-Type': 'application/json',
                 'Authorization': 'Bearer' + token
             },
             body: body
