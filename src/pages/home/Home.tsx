@@ -1,5 +1,5 @@
 import PageTemplate from "@assets/PageTemplate";
-import PythonLogo from '@assets/python-logo-only.svg'
+import PythonLogo from '@assets/logos/python-logo-only.svg'
 import About from "./components/About ";
 import Team from "./components/Team";
 import Tecnologies from "./components/Tecnologies";
@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <PageTemplate>
            <div className="min-h-screen">
-                <section className="text-gray-600 body-font mt-[10%] mx-5 mb-[30%]">
+                <section className="text-gray-600 body-font mt-[10%] mx-5 mb-[27%]">
                     <div className="container my-auto mx-auto flex md:flex-row flex-col items-center justify-center">
                         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0  items-center">
                             <img className="object-cover object-center rounded w-[45%]" alt="python logo" src={PythonLogo}/>
@@ -36,9 +36,10 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
-                <About></About>
-                <Tecnologies></Tecnologies>
-                <Team></Team>
+                
+                <About />
+                <Tecnologies />
+                <Team />
                 
             </div>
         </PageTemplate>
