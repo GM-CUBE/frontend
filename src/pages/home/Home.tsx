@@ -3,6 +3,7 @@ import PythonLogo from '@assets/logos/python-logo-only.svg'
 import About from "./components/About ";
 import Team from "./components/Team";
 import Tecnologies from "./components/Tecnologies";
+import Taskflow from "./components/Taskflow";
 
 const Home = () => {
     return (
@@ -38,6 +39,7 @@ const Home = () => {
                 </section>
 
                 <About />
+                <Taskflow />
                 <Tecnologies />
                 <Team />
                 
