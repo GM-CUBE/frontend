@@ -1,9 +1,10 @@
 import Home from "@pages/Home";
 import Arena from "@pages/arena/Arena";
+import Match from "@pages/arena/Match";
 import Learn from "@pages/Learn";
-import Login from "@pages/auth/Login";
-import Signup from "@pages/auth/Signup";
 import { createBrowserRouter } from "react-router-dom";
+import Login from "@pages/Auth/Login";
+import Signup from "@pages/Auth/Signup";
 
 export const router = createBrowserRouter([
     {
@@ -13,6 +14,10 @@ export const router = createBrowserRouter([
     {
         path: "/play",
         element: <Arena />
+    },
+    {
+        path: "/play/match",
+        element: <Match />
     },
     {
         path: "/login",
