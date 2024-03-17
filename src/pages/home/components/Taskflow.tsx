@@ -11,7 +11,7 @@ const Taskflow = () => {
     ];
 
     return (
-        <section className="text-gray-600 body-font mx-[3%] mb-[20%]">
+        <section className="text-gray-600 body-font mx-[3%] mb-[17%]">
             <h2 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-[#EEEEEE]">Taskflow</h2>
             <div className="container px-5 py-24 mx-auto flex flex-wrap">
                 <div className="flex flex-wrap w-full">

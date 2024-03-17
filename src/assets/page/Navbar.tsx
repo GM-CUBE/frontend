@@ -2,9 +2,17 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faLayerGroup } from '@fortawesome/free-solid-svg-icons'
 import { useSessionContext } from "hooks/useSessionContext";
+import { useState } from "react";
 
 const NavBar = () => {
+     const [reRender, serReRender] = useState(false)
      const context = useSessionContext()
+
+     const logOut = () => {
+          context.user = null;
+          context.token = '';
+          serReRender(!reRender)
+     }
 
      return (
           <header className="text-gray-600 body-font h-24 container mx-auto flex flex-wrap pt-5 flex-col md:flex-row items-center">
@@ -33,7 +41,10 @@ const NavBar = () => {
                          </Link>
                     </>
                ) : (
-                    <Link to="/me" className="text-white bg-[#76ABAE] border-0 py-1 px-5 focus:outline-none hover:bg-[#35575A] rounded mt-4 md:mt-0 mr-2 text-xl"> Me </Link>
+                    <>
+                         <Link to="/me" className="bg-[#EEEEEE] border-0 py-1 px-5 focus:outline-none hover:bg-[#7A7A7A] hover:text-[#EEEEEE] rounded-full mt-4 md:mt-0 mr-2 text-xl"> Me </Link>
+                         <Link to="/" onClick={logOut} className="text-white bg-[#76ABAE] border-0 py-1 px-5 focus:outline-none hover:bg-[#35575A] rounded mt-4 md:mt-0 mr-2 text-xl">Log Out</Link>
+                    </>
                )}
 
           </header>

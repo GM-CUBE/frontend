@@ -1,10 +1,12 @@
 import Home from "@pages/Home";
 import Arena from "@pages/arena/Arena";
-import Match from "@pages/arena/Match";
-import Learn from "@pages/Learn";
-import { createBrowserRouter } from "react-router-dom";
+import Learn from "@pages/lessons/Learn";
 import Login from "@pages/Auth/Login";
 import Signup from "@pages/Auth/Signup";
+import Exercise from "@pages/lessons/Exercise"
+import { createBrowserRouter } from "react-router-dom";
+import Match from "@pages/arena/Match";
+import Me from "@pages/Auth/Me";
 
 export const router = createBrowserRouter([
     {
@@ -30,5 +32,13 @@ export const router = createBrowserRouter([
     {
         path: "/learn",
         element: <Learn />
+    },
+    {
+        path: "/exercise/:level_id",
+        element: <Exercise />  
+    },
+    {
+        path: "/me",
+        element: <Me />
     }
 ])

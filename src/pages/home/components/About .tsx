@@ -1,26 +1,22 @@
 const About = () => {
      return (
-          <div className="mx-[3%] mb-[20%]">
+          <div className="mx-[3%] mb-[17%]">
                <h2 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-[#EEEEEE] ">About the project</h2>
                <p className="text-[#EEEEEE] text-lg w-[50%]">
-                    Se ha creado esta plataforma con el objetivo de enseñar a programar en Python de una manera divertida y competitiva. No importa cuál sea tu nivel de experiencia, en nuestra plataforma, podrás aprender desde las bases mediante una serie de lecciones y retos de programación, adaptados a tu nivel.
+                    This platform has been created with the aim of teaching programming in Python in a fun and competitive way. No matter your level of experience, on our platform, you can learn from the basics through a series of programming lessons and challenges, adapted to your level.
                </p>
                <br />
                <p className="text-[#EEEEEE] text-lg w-[50%]">
-                    Para practicar tus habilidades obtenidas hasta el momento tendrás que enfrentarte a otros usuarios con conocimientos similares y vencerlos en un duelo por resolver ejercicios lo más rápido posible.
+                    To practice your skills obtained so far, you will have to face other users with similar knowledge and beat them in a duel to solve exercises as quickly as possible.
                </p>
                <br />
                <p className="text-[#EEEEEE] text-lg w-[50%]">
-                    A medida que vayas ganado más prestigio dentro de la plataforma irás desbloqueando nuevas lecciones y adquiriendo nuevos conocimientos para poder enfrentarte a nuevos retos.     
+                    As you gain more prestige within the platform, you will unlock new lessons and acquire new knowledge to be able to face new challenges.     
                </p>
                <br />
                <p className="text-[#EEEEEE] text-lg w-[50%]">
-                    Además, por cada combate ganado obtendrás monedas que podrás utilizar para adquirir ventajas en combate para atacar o defenderte de tu oponente, convirtiendo cada desafío en un emocionante combate.
+                    In addition, for each battle won you will earn coins that you can use to acquire advantages in combat to attack or defend yourself against your opponent, turning each challenge into an exciting fight.
                </p>
-
-               <br />
-               <br />
-               <br />
 
           </div>
      )

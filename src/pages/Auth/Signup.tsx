@@ -1,27 +1,68 @@
 import PageTemplate from "@assets/PageTemplate";
 import { FormEvent, useState } from "react";
 import { useSessionContext } from "hooks/useSessionContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const Signup = () => {
     const session = useSessionContext()
 
+    const [loginCorrect, setLogin] = useState(true)
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [age, setAge] = useState(0)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [errorType, setErrorType] = useState(1)
+    const goHome = useNavigate()
+
+
+    const errors: any = {
+        1: 'Empty First Name input!',
+        2: 'Empty Last Name input!',
+        3: 'Add an age!',
+        4: 'Empty Username input!',
+        5: 'Empty Password!',
+        6: 'Review the inputs or change Username!'
+    }
 
     const OnSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-
-        const res = await session.signup(firstName, lastName, age, username, password);
-
-        console.log(res)
+        
+        if (firstName === ''){
+            setLogin(false)
+        }
+        else if (lastName === ''){
+            setErrorType(2)
+            setLogin(false)
+        }
+        else if (age === 0){
+            setErrorType(3)
+            setLogin(false)
+        }
+        else if (username === ''){
+            setErrorType(4)
+            setLogin(false)
+        }
+        else if (password === ''){
+            setErrorType(5)
+            setLogin(false)
+        }
+        else {
+            const res = await session.signup(firstName, lastName, age, username, password);
+            console.log(res)
+            if (res === true){
+                goHome('/learn')
+            }
+            else {
+                setErrorType(6)
+                setLogin(false)
+            }
+        }
     }
 
+    
     return (
         <PageTemplate>
 
@@ -29,7 +70,7 @@ const Signup = () => {
                 onSubmit={OnSubmit}>
                 <Link to="/" className=" self-start">
                     <FontAwesomeIcon icon={faArrowLeft} className="pe-2" />
-                    Regresar
+                    Back
                 </Link>
 
                 <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-[#f6c90e]">SIGN UP</h1>
@@ -97,6 +138,13 @@ const Signup = () => {
                 </fieldset>
 
                 <button className="rounded-md border-2 border-solid border-white text-white p-1" type="submit">Sign up</button>
+                <Link to="/login" className="text-[#76ABAE]">
+                    If you already have an account, click me!
+                    <FontAwesomeIcon icon={faArrowRight} className="ml-2"/>
+                </Link>
+                {loginCorrect === false && (
+                    <h2 className="text-red-600 font-semibold text-lg">{errors[errorType]}</h2>
+                )}
 
             </form>
 
