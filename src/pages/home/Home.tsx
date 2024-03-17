@@ -1,6 +1,8 @@
 import PageTemplate from "@assets/PageTemplate";
 import PythonLogo from '@assets/python-logo-only.svg'
 import About from "./components/About ";
+import Team from "./components/Team";
+import Tecnologies from "./components/Tecnologies";
 
 const Home = () => {
     return (
@@ -35,6 +37,9 @@ const Home = () => {
                     </div>
                 </section>
                 <About></About>
+                <Tecnologies></Tecnologies>
+                <Team></Team>
+                
             </div>
         </PageTemplate>
     );
