@@ -6,6 +6,7 @@ import Signup from "@pages/Auth/Signup";
 import Exercise from "@pages/lessons/Exercise"
 import { createBrowserRouter } from "react-router-dom";
 import Match from "@pages/arena/Match";
+import Me from "@pages/Auth/Me";
 
 export const router = createBrowserRouter([
     {
@@ -35,5 +36,9 @@ export const router = createBrowserRouter([
     {
         path: "/exercise/:level_id",
         element: <Exercise />  
+    },
+    {
+        path: "/me",
+        element: <Me />
     }
 ])
