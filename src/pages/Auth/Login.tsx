@@ -1,34 +1,20 @@
 import PageTemplate from "@assets/PageTemplate";
-import SessionContextProvider, { SessionContext } from "@context/SessionContext";
+import { SessionContext } from "@context/SessionContext";
 import { FormEvent, useContext, useState } from "react";
-// import { MD5 } from 'crypto-js';
-// import { useAPI } from "hooks/useAPI";
 
 const Login = () => {
+    const session = useContext(SessionContext)
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
-    const {
-        login
-    } = useContext(SessionContext);
-
-    // const {
-    //     post
-    // } = useAPI();
 
     const OnSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        let res = await login(username, password);
+        let res = await session.login(username, password);
 
         console.log(res)
-
-        // const passwordHash = MD5(password).toString();
-
-        // const data = await post("login", "", JSON.stringify({"username": username, "password": passwordHash}))
-
-        // console.log(data)
     }
 
     return (
