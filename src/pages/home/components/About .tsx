@@ -1,6 +1,6 @@
 const About = () => {
      return (
-          <div className="mx-[3%]">
+          <div className="mx-[3%] mb-[20%]">
                <h2 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-[#EEEEEE] ">About the project</h2>
                <p className="text-[#EEEEEE] text-lg w-[50%]">
                     Se ha creado esta plataforma con el objetivo de enseñar a programar en Python de una manera divertida y competitiva. No importa cuál sea tu nivel de experiencia, en nuestra plataforma, podrás aprender desde las bases mediante una serie de lecciones y retos de programación, adaptados a tu nivel.
