@@ -5,7 +5,7 @@ import { useAPI } from "hooks/useAPI";
 export const SessionContext = React.createContext<SessionContextModel>({
     user: null,
     token: "",
-    login: async () => {}
+    login: async () => false
 })
 
 type Props = {
@@ -24,9 +24,9 @@ const SessionContextProvider = ({ children }: Props) => {
     const login = async (username: string, password: string) => {
         const passwordHash = MD5(password).toString();
 
-        const data = await post("login", "", JSON.stringify({"username": username, "password": passwordHash}))
+        const data = await post("login", "", JSON.stringify({ "username": username, "password": passwordHash }))
 
-        if (data != false){
+        if (data != false) {
             setUser(data['user'])
             setToken(data['token'])
             return true
