@@ -22,7 +22,7 @@ const Tecnologies = () => {
      ];
  
      return (
-          <div className="text-gray-600 body-font mx-[3%] mb-[20%]">
+          <div className="text-gray-600 body-font mx-[3%] mb-[17%]">
                <h2 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-[#EEEEEE]">Tecnologies</h2>
                <div className="container px-5 py-20 mx-auto">
                     <div className="flex flex-wrap -m-4 text-center">
