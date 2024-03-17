@@ -26,6 +26,7 @@ const Arena = () => {
             if (data != false) {
                 if (data['message'] == 'Match Found') {
                     setMsg("Match Found")
+                    console.log(data)
 
                     Context.initMatch({
                         questions: data['questions'],
@@ -56,10 +57,15 @@ const Arena = () => {
             if (data != false) {
                 if (data['message'] == 'Waiting...') {
                     setMsg("Searching for opponent")
-                    setInterval(searchMatch, 1000, 30000)
+                    const intervalId = setInterval(searchMatch, 1000)
+
+                    setTimeout(() => {
+                        clearInterval(intervalId)
+                    }, 3000);
                 }
                 else if (data['message'] == 'Match Found') {
                     setMsg("Match Found")
+                    console.log(data)
 
                     Context.initMatch({
                         questions: data['questions'],

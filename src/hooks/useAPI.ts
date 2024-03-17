@@ -46,10 +46,11 @@ export const useAPI = () => {
     }
 
     const put = async (end_point: string, token: string, body: string) => {
+
         const response = await fetch(get_endpoint(end_point), {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application-json',
+                'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
             },
             body: body
