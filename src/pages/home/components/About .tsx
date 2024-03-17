@@ -7,15 +7,15 @@ const About = () => {
                </p>
                <br />
                <p className="text-[#EEEEEE] text-lg w-[50%]">
-                    Para practicar tus habilidades obtenidas hasta el momento tendrás que enfrentarte a otros usuarios con conocimientos similares y vencerlos en un duelo por resolver ejercicios lo más rápido posible.
+                    To practice your skills obtained so far, you will have to face other users with similar knowledge and beat them in a duel to solve exercises as quickly as possible.
                </p>
                <br />
                <p className="text-[#EEEEEE] text-lg w-[50%]">
-                    A medida que vayas ganado más prestigio dentro de la plataforma irás desbloqueando nuevas lecciones y adquiriendo nuevos conocimientos para poder enfrentarte a nuevos retos.     
+                    As you gain more prestige within the platform, you will unlock new lessons and acquire new knowledge to be able to face new challenges.     
                </p>
                <br />
                <p className="text-[#EEEEEE] text-lg w-[50%]">
-                    Además, por cada combate ganado obtendrás monedas que podrás utilizar para adquirir ventajas en combate para atacar o defenderte de tu oponente, convirtiendo cada desafío en un emocionante combate.
+                    In addition, for each battle won you will earn coins that you can use to acquire advantages in combat to attack or defend yourself against your opponent, turning each challenge into an exciting fight.
                </p>
 
           </div>

@@ -1,10 +1,11 @@
 import iñigo from '@assets/fotos/Iñigo.jpg';
+import juanPablo from '@assets/fotos/JP.jpeg'
 
 const Team = () => {
      const teamMembers = [
-          { name: 'CARLOS ANDRÉS CANCINO ESCOBAR', imageUrl: 'https://dummyimage.com/302x302', url: '' },
-          { name: 'JUAN PABLO GÓMEZ HARO CABRERA', imageUrl: 'https://dummyimage.com/300x300', url: ''},
-          { name: 'IÑIGO QUINTANA DELGAILLO', imageUrl: iñigo, url: 'https://www.linkedin.com/in/i%C3%B1igo-quintana/' }
+          { name: 'CARLOS ANDRÉS CANCINO ESCOBAR', imageUrl: 'https://dummyimage.com/302x302'},
+          { name: 'JUAN PABLO GÓMEZ HARO CABRERA', imageUrl: juanPablo},
+          { name: 'IÑIGO QUINTANA DELGAILLO', imageUrl: iñigo}
      ];
 
      return (
@@ -19,12 +20,6 @@ const Team = () => {
                                    <br />
                                    <span className="inline-block h-1 w-10 rounded bg-[#f6c90e] mb-4" />
                                    <h2 className="text-[#76ABAE] font-medium title-font tracking-wider">{member.name}</h2>
-                                   <a href={member.url} className="ml-3 text-[#EEEEEE] flex justify-center items-center" target="_blank">
-                                        <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0" className="w-5 h-5" viewBox="0 0 24 24">
-                                             <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-                                             <circle cx="4" cy="4" r="2" stroke="none"></circle>
-                                        </svg>
-                                   </a>
                               </div>
                          </div>
                          ))}
